@@ -1,7 +1,6 @@
 // Microsoft Visual C++ generated resource script.
 //
 #include "beebemrc.h"
-#include "version.h"
 
 #define APSTUDIO_READONLY_SYMBOLS
 /////////////////////////////////////////////////////////////////////////////
@@ -14,13 +13,11 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// English (U.S.) resources
+// English (United States) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
-#ifdef _WIN32
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 #pragma code_page(1252)
-#endif //_WIN32
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -110,7 +107,7 @@ BEGIN
     CONTROL         "SFT LK",IDK_SHIFT_LOCK,"Button",BS_OWNERDRAW | WS_TABSTOP,9,62,29,14
 END
 
-IDD_KEYBOARD_LINKS DIALOG  0, 0, 160, 66
+IDD_KEYBOARD_LINKS DIALOG 0, 0, 160, 66
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "Keyboard Links"
 CLASS "LinksDialog"
@@ -212,7 +209,7 @@ BEGIN
     CONTROL         "Big endian",IDC_WATCHENDIAN,"Button",BS_AUTOCHECKBOX | BS_LEFT | WS_TABSTOP,444,258,50,14
 END
 
-IDD_TAPECONTROL DIALOG  0, 0, 187, 300
+IDD_TAPECONTROL DIALOG 0, 0, 187, 300
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "BeebEm Tape Control"
 FONT 8, "MS Sans Serif"
@@ -330,8 +327,8 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION VERSION_MAJOR,VERSION_MINOR,0,0
- PRODUCTVERSION VERSION_MAJOR,VERSION_MINOR,0,0
+ FILEVERSION 4,16,0,0
+ PRODUCTVERSION 4,16,0,0
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -349,12 +346,12 @@ BEGIN
             VALUE "Comments", "BeebEm - BBC Micro Emulator"
             VALUE "CompanyName", "Mike Wyatt"
             VALUE "FileDescription", "BeebEm"
-            VALUE "FileVersion", VERSION_STRING
+            VALUE "FileVersion", "4.16"
             VALUE "InternalName", "BeebEm"
             VALUE "LegalCopyright", "Copyright © 2009"
             VALUE "OriginalFilename", "BeebEm.exe"
             VALUE "ProductName", "BeebEm"
-            VALUE "ProductVersion", VERSION_STRING
+            VALUE "ProductVersion", "4.16"
         END
     END
     BLOCK "VarFileInfo"
@@ -362,6 +359,7 @@ BEGIN
         VALUE "Translation", 0x809, 1200
     END
 END
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -400,16 +398,16 @@ BEGIN
         POPUP "Screen Capture Options"
         BEGIN
             MENUITEM "Capture at Display Resolution", IDM_CAPTURERES_DISPLAY
-            MENUITEM "Capture at 1280x1024",          IDM_CAPTURERES_1280
-            MENUITEM "Capture at 640x512",            IDM_CAPTURERES_640
-            MENUITEM "Capture at 320x256",            IDM_CAPTURERES_320
+            MENUITEM "Capture at 1280x1024",        IDM_CAPTURERES_1280
+            MENUITEM "Capture at 640x512",          IDM_CAPTURERES_640
+            MENUITEM "Capture at 320x256",          IDM_CAPTURERES_320
             MENUITEM SEPARATOR
-            MENUITEM "BMP Format",                    IDM_CAPTUREBMP
-            MENUITEM "JPEG Format",                   IDM_CAPTUREJPEG
-            MENUITEM "GIF Format",                    IDM_CAPTUREGIF
-            MENUITEM "PNG Format",                    IDM_CAPTUREPNG
+            MENUITEM "BMP Format",                  IDM_CAPTUREBMP
+            MENUITEM "JPEG Format",                 IDM_CAPTUREJPEG
+            MENUITEM "GIF Format",                  IDM_CAPTUREGIF
+            MENUITEM "PNG Format",                  IDM_CAPTUREPNG
         END
-        MENUITEM "Capture Screen...",                 IDM_CAPTURESCREEN
+        MENUITEM "Capture Screen...",           IDM_CAPTURESCREEN
         MENUITEM SEPARATOR
         POPUP "Video Options"
         BEGIN
@@ -595,9 +593,6 @@ BEGIN
             MENUITEM "DirectSound",                 IDM_DIRECTSOUND
         END
         MENUITEM "&Sound On/Off",               IDM_SOUNDONOFF
-#ifdef SPEECH_ENABLED
-        MENUITEM "Speech On/Off",               IDM_SPEECH
-#endif
         MENUITEM "Sound Chip",                  IDM_SOUNDCHIP
         MENUITEM SEPARATOR
         POPUP "Sound &Effects"
@@ -649,7 +644,9 @@ BEGIN
             MENUITEM "BBC Model B + &Integra-B",    ID_MODELBINT
             MENUITEM "BBC Model B &Plus",           ID_MODELBPLUS
             MENUITEM "BBC &Master 128",             ID_MASTER128
-            MENUITEM "Acorn FileStore",             ID_FILESTORE
+            MENUITEM SEPARATOR
+            MENUITEM "Filestore E01",               ID_FILESTORE_E01
+            MENUITEM "Filestore E01S",              ID_FILESTORE_E01S
         END
         POPUP "Model B &Floppy Controller"
         BEGIN
@@ -686,8 +683,8 @@ BEGIN
             MENUITEM "Rom &E",                      IDM_ALLOWWRITES_ROME, CHECKED
             MENUITEM "Rom &F",                      IDM_ALLOWWRITES_ROMF, CHECKED
         END
-        MENUITEM "SW RAM Board On/Off", IDM_SWRAMBOARD
-        MENUITEM "Edit ROM Configuration", IDM_ROMCONFIG
+        MENUITEM "SW RAM Board On/Off",         IDM_SWRAMBOARD
+        MENUITEM "Edit ROM Configuration",      IDM_ROMCONFIG
         MENUITEM SEPARATOR
         MENUITEM "Basic &Hardware Only",        ID_BASIC_HARDWARE_ONLY
         MENUITEM "&Teletext Half Mode",         ID_TELETEXTHALFMODE
@@ -759,18 +756,18 @@ END
 // TEXTINCLUDE
 //
 
-1 TEXTINCLUDE
+1 TEXTINCLUDE 
 BEGIN
     "beebemrc.h\0"
 END
 
-2 TEXTINCLUDE
+2 TEXTINCLUDE 
 BEGIN
     "#include ""winresrc.h""\r\n"
     "\0"
 END
 
-3 TEXTINCLUDE
+3 TEXTINCLUDE 
 BEGIN
     "\r\n"
     "\0"
@@ -800,7 +797,7 @@ BEGIN
     VK_DOWN,        ID_ACCELDOWN,           VIRTKEY, NOINVERT
 END
 
-#endif    // English (U.S.) resources
+#endif    // English (United States) resources
 /////////////////////////////////////////////////////////////////////////////
 
 
@@ -814,3 +811,4 @@ END
 
 /////////////////////////////////////////////////////////////////////////////
 #endif    // not APSTUDIO_INVOKED
+

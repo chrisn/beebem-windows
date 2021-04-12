@@ -1,30 +1,10 @@
-/****************************************************************
-BeebEm - BBC Micro and Master 128 Emulator
-Copyright (C) 1994  Nigel Magnay
-Copyright (C) 1997  Mike Wyatt
-
-This program is free software; you can redistribute it and/or
-modify it under the terms of the GNU General Public License
-as published by the Free Software Foundation; either version 2
-of the License, or (at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public
-License along with this program; if not, write to the Free
-Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
-Boston, MA  02110-1301, USA.
-****************************************************************/
-
 //{{NO_DEPENDENCIES}}
 // Microsoft Visual C++ generated include file.
 // Used by BeebEm.rc
 //
 #define IDK_TAB                         3
 #define IDK_ESC                         4
+#define VERSION_MAJOR                   4
 #define IDK_1                           5
 #define IDK_2                           6
 #define IDK_3                           7
@@ -37,6 +17,7 @@ Boston, MA  02110-1301, USA.
 #define IDK_0                           14
 #define IDK_Q                           15
 #define IDK_W                           16
+#define VERSION_MINOR                   16
 #define IDK_E                           17
 #define IDK_R                           18
 #define IDK_T                           19
@@ -435,15 +416,18 @@ Boston, MA  02110-1301, USA.
 #define ID_VIEW_DD_3840X2160            40295
 #define IDM_EMUPAUSED                   40296
 #define IDM_CAPTUREMOUSE                40318
+#define ID_BBCMODEL_SEPERATOR           40319
+#define ID_FILESTORE_E01                40320
+#define ID_FILESTORE_E01S               40322
 #define IDC_STATIC                      -1
 
 // Next default values for new objects
-//
+// 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NO_MFC                     1
 #define _APS_NEXT_RESOURCE_VALUE        118
-#define _APS_NEXT_COMMAND_VALUE         40319
+#define _APS_NEXT_COMMAND_VALUE         40323
 #define _APS_NEXT_CONTROL_VALUE         1090
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
