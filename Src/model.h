@@ -26,7 +26,8 @@ enum class Model : unsigned char {
 	IntegraB,  // 1: BBC B with Integra B
 	BPlus,     // 2: BBC B+
 	Master128, // 3: BBC Master 128
-	FileStore  // 4: Acorn FileStore E01S
+	FileStoreE01,  // 4: Acorn FileStore E01
+	FileStoreE01S  // 5: Acorn FileStore E01S
 };
 
 enum class CPU : unsigned char {
