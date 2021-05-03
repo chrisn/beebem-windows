@@ -193,8 +193,12 @@ public:
 	}
 
 	HWND GethWnd() { return m_hWnd; }
-	
+
 	void RealizePalette(HDC) {};
+
+	void LoadBackgroundBitmap(Model model);
+
+	void SelectMachineType(Model model);
 	void ResetBeebSystem(Model NewModelType, bool LoadRoms);
 
 	void CreateArmCoPro();
@@ -276,6 +280,7 @@ public:
 	void LoadEmuUEF(FILE *SUEF,int Version);
 
 	HMENU		m_hMenu;
+	HBITMAP m_hBackgroundBitmap;
 	bool		m_frozen;
 	char*		m_screen;
 	char*		m_screen_blur;
@@ -495,6 +500,7 @@ public:
 	void ReinitDX(void);
 	void ExitDX(void);
 	void UpdateSmoothing(void);
+	void DrawBackgroundBitmap(HDC hDC);
 
 	// DirectDraw
 	HRESULT InitDirectDraw(void);
