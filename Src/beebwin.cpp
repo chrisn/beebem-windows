@@ -161,6 +161,7 @@ BeebWin::BeebWin()
 	memset(&UserKeymap, 0, sizeof(KeyMap));
 	memset(m_UserKeyMapPath, 0, sizeof(m_UserKeyMapPath));
 	m_hBitmap = m_hOldObj = m_hDCBitmap = NULL;
+	m_hBackgroundBitmap = nullptr;
 	m_screen = m_screen_blur = NULL;
 	m_ScreenRefreshCount = 0;
 	m_RelativeSpeed = 1;
@@ -435,6 +436,8 @@ void BeebWin::ApplyPrefs()
 		}
 	}
 
+	LoadBackgroundBitmap(MachineType);
+
 	ResetBeebSystem(MachineType, true);
 
 	// Rom write flags
@@ -461,6 +464,11 @@ BeebWin::~BeebWin()
 		DeleteObject(m_hBitmap);
 	if (m_hDCBitmap != NULL)
 		DeleteDC(m_hDCBitmap);
+
+	if (m_hBackgroundBitmap != nullptr)
+	{
+		DeleteObject(m_hBackgroundBitmap);
+	}
 
 	GdiplusShutdown(m_gdiplusToken);
 
@@ -509,6 +517,41 @@ void BeebWin::Shutdown()
 
 	DestroyArmCoPro();
 	DestroySprowCoPro();
+}
+
+/****************************************************************************/
+
+void BeebWin::LoadBackgroundBitmap(Model model)
+{
+	if (model == Model::FileStoreE01 || model == Model::FileStoreE01S)
+	{
+		if (m_hBackgroundBitmap == nullptr)
+		{
+			m_hBackgroundBitmap = (HBITMAP)LoadImage(
+				hInst,
+				MAKEINTRESOURCE(IDB_FILESTORE),
+				IMAGE_BITMAP,
+				0,
+				0,
+				LR_CREATEDIBSECTION
+			);
+		}
+
+		InvalidateRect(m_hWnd, nullptr, TRUE);
+	}
+}
+
+/****************************************************************************/
+
+void BeebWin::SelectMachineType(Model model)
+{
+	LoadBackgroundBitmap(model);
+
+	if (MachineType != model)
+	{
+		ResetBeebSystem(model, true);
+		UpdateModelMenu();
+	}
 }
 
 /****************************************************************************/
@@ -1460,6 +1503,16 @@ LRESULT CALLBACK WndProc(HWND hWnd,     // window handle
 			return TRUE;
 
 		case WM_PAINT:
+			if (MachineType == Model::FileStoreE01 || MachineType == Model::FileStoreE01S)
+			{
+				PAINTSTRUCT ps;
+				HDC hDC = BeginPaint(hWnd, &ps);
+
+				mainWin->DrawBackgroundBitmap(hDC);
+
+				EndPaint(hWnd, &ps);
+			}
+			else
 			{
 				PAINTSTRUCT ps;
 				HDC hDC = BeginPaint(hWnd, &ps);
@@ -3706,51 +3759,27 @@ void BeebWin::HandleCommand(int MenuId)
 		break;
 
 	case ID_MODELB:
-		if (MachineType != Model::B)
-		{
-			ResetBeebSystem(Model::B, true);
-			UpdateModelMenu();
-		}
+		SelectMachineType(Model::B);
 		break;
 
 	case ID_MODELBINT:
-		if (MachineType != Model::IntegraB)
-		{
-			ResetBeebSystem(Model::IntegraB, true);
-			UpdateModelMenu();
-		}
+		SelectMachineType(Model::IntegraB);
 		break;
 
 	case ID_MODELBPLUS:
-		if (MachineType != Model::BPlus)
-		{
-			ResetBeebSystem(Model::BPlus, true);
-			UpdateModelMenu();
-		}
+		SelectMachineType(Model::BPlus);
 		break;
 
 	case ID_MASTER128:
-		if (MachineType != Model::Master128)
-		{
-			ResetBeebSystem(Model::Master128, true);
-			UpdateModelMenu();
-		}
+		SelectMachineType(Model::Master128);
 		break;
 
 	case ID_FILESTORE_E01:
-		if (MachineType != Model::FileStoreE01)
-		{
-			ResetBeebSystem(Model::FileStoreE01, true);
-			UpdateModelMenu();
-		}
+		SelectMachineType(Model::FileStoreE01);
 		break;
 
 	case ID_FILESTORE_E01S:
-		if (MachineType != Model::FileStoreE01S)
-		{
-			ResetBeebSystem(Model::FileStoreE01S, true);
-			UpdateModelMenu();
-		}
+		SelectMachineType(Model::FileStoreE01S);
 		break;
 
 	case ID_REWINDTAPE:
