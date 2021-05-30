@@ -246,6 +246,7 @@ int BeebWin::ReadDisc(int Drive, bool bCheckForPrefs)
 		/* Write protect the disc */
 		if (m_WriteProtectOnLoad != m_WriteProtectDisc[Drive])
 			ToggleWriteProtect(Drive);
+
 	}
 
 	return(gotName);
